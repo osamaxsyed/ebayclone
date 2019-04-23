@@ -72,7 +72,7 @@ e.printStackTrace();
 %>
 
 
-<form method="post" action="makeBid">
+<form method="post" action="makeBid.jsp">
 		<table align="right">
 			<tr>
 				<td>item_id</td>

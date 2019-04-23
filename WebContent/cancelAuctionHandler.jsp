@@ -22,12 +22,9 @@ try {
 	myStmt = conn.createStatement();
 	String actualPassword = null;
 	int security =0;
+	int myRs = myStmt.executeUpdate("delete from cs336db.item where item_ID = '"+ item_ID +"';");
 	
-	ResultSet myRs = myStmt.executeQuery("delete from cs336db.item where username = '"+ item_ID +"';");
-	while(myRs.next()) {
-		 actualPassword = (myRs.getString("password"));
-		 security = (myRs.getInt("security"));
-	}
+
 
 	
 } catch (SQLException e) {

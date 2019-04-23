@@ -12,7 +12,7 @@
 <body>
 Fill in all entries to auction off new item. Press submit when finished.
 
-	<form method="post" action="NewAuction">
+	<form method="post" action="newAuction.jsp">
 		<table>
 			<tr>
 				<td>Type</td>

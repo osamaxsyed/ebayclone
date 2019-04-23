@@ -3,20 +3,22 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="project336.DbManager"%>
 <%@page import="java.sql.DriverManager"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@page import ="java.text.DateFormat" %>
 <%@page import ="java.util.Date"%>
 <%@page import ="java.text.SimpleDateFormat"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
     
  <%
 String url = "jdbc:mysql://cs336db.ce9vreyc2dac.us-east-2.rds.amazonaws.com";
 Connection myCon = null;
 
+
 try{ 
+	
+	Class.forName("com.mysql.jdbc.Driver").newInstance();
+	myCon = DriverManager.getConnection(url, "cs336", "Sarat!23");
 	
 	Statement statement = null;
 	ResultSet resultSet = null;
@@ -38,7 +40,7 @@ try{
 						"'"+iamount+ "'"
 			+ ")";
 	statement.executeUpdate(sql);
-	response.sendRedirect("successforPostedAndBid.jsp"); 
+	response.sendRedirect("successforPostedBid.jsp"); 
 // autmatic bidding steps?
 /*find the bids that are for the same item and and where max_bids are more than the current bid made: step 1
 — find where increment of bid ISN’T zero….

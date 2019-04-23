@@ -96,7 +96,7 @@ try {
             		+ "(username,auction_ID)" + "values("+"'"+user+ "'"+ ","+	"'"+total+ "'"
         					+ ")";
 			third.executeUpdate(intoB);
-			response.sendRedirect("successforPostedAndBid.jsp"); 
+			response.sendRedirect("successforPostedBid.jsp"); 
 			
 		}catch (SQLException e){
 			// TODO Auto-generated catch block
