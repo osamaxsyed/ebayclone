@@ -33,7 +33,9 @@ conn = DriverManager.getConnection(url, "cs336", "Sarat!23");
 <form method=post action="browsebyType.jsp">
 		<input type="submit" value="Type" />
 	</form>
-
+<form method=post action="browsebyColor.jsp">
+		<input type="submit" value="Color" />
+	</form>
 
 
 

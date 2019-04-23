@@ -5,9 +5,10 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 <body>
-<h2 align="left"><font><strong>Showing Items for Auction by Model </strong></font></h2>
+<h2 align="left"><font><strong>Showing Items Categorized by Color </strong></font></h2>
 <table align="left" cellpadding="5" cellspacing="5" border="1">
 <tr>
+
 </tr>
 <tr bgcolor="#A52A2A">
 <td><b>itemID</b></td>
@@ -22,7 +23,6 @@
 <td><b>MinPrice</b></td>
 <td><b>InitPrice</b></td>
 </tr>
-
 </body>
 
 <% 
@@ -37,14 +37,15 @@ try {
 	conn = DriverManager.getConnection(url, "cs336", "Sarat!23");
 	
 	
-	String Item_model = request.getParameter("Item_model");
+	String Item_Color = request.getParameter("item_color");
 	Statement myStmt;
 	myStmt = conn.createStatement();
 
 	
+	ResultSet myRs = myStmt.executeQuery("select * from cs336db.has h,cs336db.item i,cs336db.Auction a where h.item_ID = i.item_ID AND h.auction_id = a.auction_id AND i.item_color = '"+ Item_Color +"';");
 
-	ResultSet myRs = myStmt.executeQuery("select * from cs336db.has h,cs336db.item i,cs336db.Auction a where h.item_ID = i.item_ID AND h.auction_id = a.auction_id AND i.item_model = '"+ Item_model +"';");
-
+	
+	
 	
 	while(myRs.next()){
 		%>
@@ -71,7 +72,6 @@ try {
 }
 
 %>
-
 		<form method=post action="logout.jsp">
 		<input type="submit" value="Logout" />
 	</form>
@@ -79,3 +79,5 @@ try {
 	<form method=post action="search.jsp">
 		<input type="submit" value="Back to Browse" />
 	</form>
+		
+

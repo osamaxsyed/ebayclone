@@ -14,15 +14,15 @@
 </head>
 <body>
 
-<form method="post" action="showbyType.jsp">
+<form method="post" action="showbyColor.jsp">
 
 <table align="left" cellpadding="5" cellspacing="5" border="1">
 
 
 
 			<tr>
-				<td>ITEM TYPE</td>
-				<td><input type="text" name="item_type"></td>
+				<td>ITEM COLOR</td>
+				<td><input type="text" name="item_color"></td>
 			</tr>
 
 			<tr>
