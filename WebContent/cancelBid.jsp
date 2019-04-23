@@ -16,11 +16,10 @@
     } else{ %>
     
     	    <form action="cancelBidHandler.jsp" method="POST">
-           		<label>Seller</label>
-           		<input type="text" name="seller" placeholder="Username" required><br>
-           		<label>item_ID</label>
-            	<input type="text" name="item_ID" placeholder="item_ID" required><br>    			
-    			<input type="submit" value="Cancel The Auction">
+            	<input type="text" name="auction_id" placeholder="auction_id" required><br>
+             	<input type="text" name="username" placeholder="username" required><br>    			
+            	    			
+    			<input type="submit" value="Cancel The Bid">
     		</form>
     
     

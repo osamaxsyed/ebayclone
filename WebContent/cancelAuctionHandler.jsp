@@ -16,13 +16,13 @@ try {
 	
 	
 	String item_ID = request.getParameter("item_ID");
-	String seller = request.getParameter("seller");
-	System.out.println(item_ID + " " + seller);
+	System.out.println(item_ID);
 	Statement myStmt;
 	myStmt = conn.createStatement();
-	String actualPassword = null;
-	int security =0;
-	int myRs = myStmt.executeUpdate("delete from cs336db.item where item_ID = '"+ item_ID +"';");
+	int myRs = myStmt.executeUpdate("delete from cs336db.Auction where auction_id = '"+ item_ID +"'");
+	System.out.println("rows deleted: " + myRs);
+	response.sendRedirect("sucessforPostedBid.jsp"); 
+
 	
 
 

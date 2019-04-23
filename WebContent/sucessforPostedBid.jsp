@@ -8,7 +8,7 @@
 </head>
 <body>
 Succeed! go back to home page: 
-<form method=post action="standardDash.jsp">
+<form method=post action="index.jsp">
 		<input type="submit" value="Home" />
 	</form>
 </body>

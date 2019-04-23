@@ -16,9 +16,6 @@
     } else{ %>
     
     	    <form action="cancelAuctionHandler.jsp" method="POST">
-           		<label>Seller</label>
-           		<input type="text" name="seller" placeholder="Username" required><br>
-           		<label>item_ID</label>
             	<input type="text" name="item_ID" placeholder="item_ID" required><br>    			
     			<input type="submit" value="Cancel The Auction">
     		</form>
