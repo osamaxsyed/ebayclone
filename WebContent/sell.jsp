@@ -14,7 +14,6 @@ Fill in all entries to auction off new item. Press submit when finished.
 
 	<form method="post" action="newAuction.jsp">
 		<table>
-		
 			<tr>
 				<td>Type</td>
 				<td><input type="text" name="atype"></td>
