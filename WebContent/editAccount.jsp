@@ -11,11 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-Enter the username for the account you want to update
-<form><input type="text" name="username"></form>
 
-	<form method="post" action="createLoginHandler.jsp">
+Enter the information you want to update: if not updating then enter old information:
+
+	<form method="post" action="editAccountHandler.jsp">
 		<table>
+					<tr>
+				<td>Enter the username for the account you want to update</td>
+				<td><input type="text" name="uname"></td>
+			</tr>
 			<tr>
 				<td>First name</td>
 				<td><input type="text" name="fname"></td>
@@ -28,10 +32,7 @@ Enter the username for the account you want to update
 				<td>E-mail</td>
 				<td><input type="text" name="email"></td>
 			</tr>
-			<tr>
-				<td>User name</td>
-				<td><input type="text" name="uname"></td>
-			</tr>
+
 			<tr>
 				<td>Password</td>
 				<td><input type="password" name="password"></td>
