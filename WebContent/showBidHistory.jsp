@@ -65,7 +65,7 @@ try {
 		<input type="submit" value="Logout" />
 	</form>
 	
-	<form method=post action="repDash.jsp">
+	<form method=post action="index.jsp">
 		<input type="submit" value="Back to Main Menu" />
 	</form>	
 
