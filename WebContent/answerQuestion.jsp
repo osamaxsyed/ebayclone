@@ -24,6 +24,10 @@ Enter the information you want to update: if not updating then enter old informa
 				<td>What is your answer</td>
 				<td><input type="text" name="answer"></td>
 			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="submit"></td>
+			</tr>
 	
 		</table>
 	</form>

@@ -3,7 +3,7 @@ Welcome Representative
 </h1>
 
 
-	<form method=post action="#">
+	<form method=post action="answerQuestion.jsp">
 		<input type="submit" value="Answer User Questions" />
 	</form>
 	<form method=post action="edit.jsp">

@@ -32,21 +32,34 @@
 					ResultSetMetaData rsmd = alertRs.getMetaData();
 					int cols=rsmd.getColumnCount();
 					while(alertRs.next()) {
+						Integer temp=0;
 						for(int i=1;i<=cols;i++){
+						//	out.print(i);
 							String colVal= alertRs.getString(i);
 							if(i==3) out.print("Question ID # ");
+							if(i==3) temp=Integer.parseInt(colVal);
 							out.print(colVal/*+ rsmd.getColumnName(i)*/);
 							if(i==1) out.println(" asks:\n");
 							if(i==2) {
-								%>
-								<br>
-								<%
-								out.print("\n Answer from our representative:");
+
+								//out.print("\n Answer from our representative: ");
 							}
 							%>
 							<br>
 							<%
 						}
+						Statement thing = conn.createStatement();
+						out.print("Representative answer: ");
+						ResultSet answer = thing.executeQuery("select answer from cs336db.question where question_ID= "+temp);
+						ResultSetMetaData rms = answer.getMetaData();
+						while(answer.next()) {
+							for(int x=1;x<=rms.getColumnCount();x++) {
+								out.print(answer.getString(x));
+							}
+						}
+						%>
+						<br>
+						<%
 						%>
 						<br>
 						<%
