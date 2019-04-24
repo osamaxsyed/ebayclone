@@ -3,22 +3,20 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="project336.DbManager"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@page import ="java.text.DateFormat" %>
 <%@page import ="java.util.Date"%>
 <%@page import ="java.text.SimpleDateFormat"%>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
  <%
 String url = "jdbc:mysql://cs336db.ce9vreyc2dac.us-east-2.rds.amazonaws.com";
 Connection myCon = null;
 
-
 try{ 
-	
-	Class.forName("com.mysql.jdbc.Driver").newInstance();
-	myCon = DriverManager.getConnection(url, "cs336", "Sarat!23");
 	
 	Statement statement = null;
 	ResultSet resultSet = null;
@@ -40,7 +38,7 @@ try{
 						"'"+iamount+ "'"
 			+ ")";
 	statement.executeUpdate(sql);
-	response.sendRedirect("successforPostedBid.jsp"); 
+	response.sendRedirect("successforPostedAndBid.jsp"); 
 // autmatic bidding steps?
 /*find the bids that are for the same item and and where max_bids are more than the current bid made: step 1
 — find where increment of bid ISN’T zero….
@@ -76,11 +74,46 @@ if (newBid + increment <= maxPrice) {
 } else {
 	newBid = maxPrice;
 }
+if(newBid <maxPrice && userNew!=null) {
+	Statement gone,g2;
+	gone=myCon.createStatement();
+	g2=myCon.createStatement();
+	Random rando = new Random();
+	int c = rando.nextInt(100000000);
+	String alt = "insert into cs336db.alert"
+			+ "(alertid, message, item_ID)"
+			+ "values(" +"'"+c+ "'"+ ", 'Sorry, an automatic bidder has outbid you on item ', "+itemID
+			+ ")";
+	gone.executeUpdate(alt);
+
+    String aaa = "insert into cs336db.makes"
+			+ "(username, alertid)"
+			+ "values(" +"'"+userNew+"', "+c
+			+ ")";
+    g2.executeUpdate(aaa);
+
+}
 //step3
 if(userNew!=null && !userNew.equals(help)) {
-	Statement third; 
+	Statement third, myStmt, fourth; 
 	third = myCon.createStatement();
+	myStmt = myCon.createStatement();
+	fourth = myCon.createStatement();
+    Random randomNum=new Random();
+    int count = 1+ randomNum.nextInt(100000000);
 	String changeBamount = "UPDATE bid SET bid_amount =" +newBid + "WHERE username ='" +userNew+ "' AND auction_ID= "+ itemID;
+    String al = "insert into cs336db.alert"
+				+ "(alertid, message, item_ID)"
+				+ "values(" +"'"+count+ "'"+ ", 'a higher bid than yours has been placed on item you've bid on item ', "+itemID
+				+ ")";
+	myStmt.executeUpdate(al);
+	
+    String intoM = "insert into cs336db.makes"
+			+ "(username, alertid)"
+			+ "values(" +"'"+userNew+"', "+count
+			+ ")";
+    fourth.executeUpdate(intoM);
+	
 	third.executeQuery(changeBamount); 
 }
 
